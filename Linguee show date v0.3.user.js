@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Linguee show date v0.3
+// @name         Linguee show date v0.4
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  Shows the date of the translated source.
 // @author       Emilis -> inboxvartotojas@gmail.com
 // @match        www.linguee.com/*
@@ -23,20 +23,20 @@ $(document).ready(function() {
         link_get = source_url_get.eq(i_index_i).attr('href');
         if(link4_8check.test(link_get)){
             if(link_get.match(link4_8check)[0].length == 4){
-                $(".source_url > a").eq(i_index_i).after(function(){return "<p class='date'>Date: " + link_get.match(link4_8check)[0] + "</p>";});
+                $(".source_url > a").eq(i_index_i).after("<p class='date'>Date: " + link_get.match(link4_8check)[0] + "</p>");
             }else if(link_get.match(link4_8check)[0].length == 8){
-                $(".source_url > a").eq(i_index_i).after(function(){return "<p class='date'>Date: " + link_get.match(link4_8check)[0].slice(0,4)+" "+link_get.match(link4_8check)[0].slice(4,6)+" "+link_get.match(link4_8check)[0].slice(6,8); + "</p>";});
+                $(".source_url > a").eq(i_index_i).after("<p class='date'>Date: " + link_get.match(link4_8check)[0].slice(0,4)+" "+link_get.match(link4_8check)[0].slice(4,6)+" "+link_get.match(link4_8check)[0].slice(6,8) + "</p>");
             }else{
                 console.log("Invalid date lenght");
             }
         }else if(link2check.test(link_get)){
-            if(link_get.match(link2check)[0].length == 2 && link_get.match(link2check)[0] >= 70){
-                $(".source_url > a").eq(i_index_i).after(function(){return "<p class='date'>Date: "+"19"+ link_get.match(link2check)[0] + "</p>";});
-            }else if(link_get.match(link2check)[0].length == 2 && link_get.match(link2check)[0] < 70){
-                $(".source_url > a").eq(i_index_i).after(function(){return "<p class='date'>Date: "+"20"+ link_get.match(link2check)[0] + "</p>";});
+            if(link_get.match(link2check)[0].length == 2 && link_get.match(link2check)[0] >= 40){
+                $(".source_url > a").eq(i_index_i).after("<p class='date'>Date: "+"19"+ link_get.match(link2check)[0] + "</p>");
+            }else if(link_get.match(link2check)[0].length == 2 && link_get.match(link2check)[0] < 40){
+                $(".source_url > a").eq(i_index_i).after("<p class='date'>Date: "+"20"+ link_get.match(link2check)[0] + "</p>");
             }        
         }else{
-            $(".source_url > a").eq(i_index_i).after(function(){return "<p class='datered'>Date not found.</p>";});
+            $(".source_url > a").eq(i_index_i).after("<p class='datered'>Date not found.</p>");
         }
     }    
 });
